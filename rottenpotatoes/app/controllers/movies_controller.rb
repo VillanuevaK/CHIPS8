@@ -38,6 +38,15 @@ class MoviesController < ApplicationController
     redirect_to movies_path
   end
 
+def search_directors
+    begin
+      @movies = Movie.find_all_director_by(params[:id])
+    rescue ArgumentError => e
+      flash[:message] = e.message
+      redirect_to root_path and return
+    end
+  end
+
   private
   # Making "internal" methods private is not required, but is a common practice.
   # This helps make clear which methods respond to requests, and which ones do not.

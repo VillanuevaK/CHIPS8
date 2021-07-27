@@ -20,7 +20,12 @@ module NavigationHelpers
 when /^the edit page for "(.*)"$/i
         edit_movie_path(Movie.find_by_title($1))
 
+when /^the details page for "(.*)"$/i
+        movie_path(Movie.find_by_title($1))
 
+when /^the Similar Movies page for "([^"]+)"$/
+      @movie_id = Movie.find_by_title($1).id
+      search_directors_path(@movie_id)
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
