@@ -39,20 +39,15 @@ class MoviesController < ApplicationController
   end
 
 def direcs
-    #begin
-   #   @movies = Movie.find_all_director_by(params[:id])
-   # rescue ArgumentError => e
-    #  flash[:message] = e.message
-     # redirect_to root_path and return
-   # end
-    @movie = Movie.find_by_id(params[:id])
-    director = "#{@movie.director}"
-    unless director.blank?
-      @movies = Movie.find_all_director_by(director)
+ 
+
+    if (dir = Movie.find_by_id(params[:id]).director) == ""
+	flash[:warning] = "'#{Movie.find_by_id(params[:id]).title}' has no director info"
+	redirect_to root_path
     else
-      flash[:warning] = "'#{@movie.title}' has no director info"
-      redirect_to root_path
+	    @movies = Movie.simdir(dir)
     end
+
 end 
 
   private
@@ -62,3 +57,21 @@ end
     params.require(:movie).permit(:title, :director, :rating, :description, :release_date)
   end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,6 +1,6 @@
 class Movie < ActiveRecord::Base
 
-def self.find_all_director_by(director)
+def self.simdir(director)
     return Movie.where(director: director)
 end
 
