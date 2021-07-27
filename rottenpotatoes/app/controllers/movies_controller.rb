@@ -38,7 +38,7 @@ class MoviesController < ApplicationController
     redirect_to movies_path
   end
 
-def search_directors
+def search_director
     #begin
    #   @movies = Movie.find_all_director_by(params[:id])
    # rescue ArgumentError => e

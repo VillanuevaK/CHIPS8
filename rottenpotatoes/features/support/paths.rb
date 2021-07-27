@@ -25,7 +25,7 @@ when /^the details page for "(.*)"$/i
 
 when /^the Similar Movies page for "([^"]+)"$/
       @movie_id = Movie.find_by_title($1).id
-      search_directors_path(@movie_id)
+      search_director_path(@movie_id)
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
